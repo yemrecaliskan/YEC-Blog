@@ -20,9 +20,20 @@
         <tr>
             <td>@item.BlogID</td>
             <td>@item.BlogTitle</td>
-            <td>@item.BlogCreateDate</td>
-            <td>@item.CategoryID</td>
-            <td>@item.BlogStatus</td>
+            <td>@(((DateTime)item.BlogCreateDate).ToString("dd-MMM-yyyy"))</td>
+            <td>
+                <span class="badge badge-info">@item.Category.CategoryName</span>
+            </td>
+            <td>
+                @if (item.BlogStatus)
+                {
+                    <span class="badge badge-success">Aktif</span>
+                }
+                else
+                {
+                    <span class="badge badge-secondary">Pasif</span>
+                }
+            </td>
             <td><a href="#" class="btn btn-danger">Sil</a></td>
             <td><a href="#" class="btn btn-warning">Düzenle</a></td>
         </tr>
