@@ -65,7 +65,7 @@ namespace BusinessLayer.Concrete
 
         public void UpdateT(Blog t)
         {
-            throw new NotImplementedException();
+            _blogDal.Update(t);
         }
     }
 }
