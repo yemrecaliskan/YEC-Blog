@@ -38,7 +38,7 @@ namespace YEC_Blog.Controllers
             {
                 p.WriterStatus = true;
                 p.WriterAbout = "Deneme";
-                wm.AddWriter(p);
+                wm.AddT(p);
                 return RedirectToAction("Index", "Blog");
             }
             else
