@@ -71,5 +71,24 @@ namespace YEC_Blog.Controllers
             }
             return View();
         }
+
+        public IActionResult DeleteBlog(int id)
+        {
+            var blogValue = bm.TGetById(id);
+            bm.DeleteT(blogValue);
+            return RedirectToAction("BlogListByWriter");
+        }
+        [HttpGet]
+        public IActionResult EditBlog(int id)
+        {
+            var blogValue = bm.TGetById(id);
+            return View(blogValue);
+        }
+
+        [HttpPost]
+        public IActionResult EditBlog(Blog p)
+        {
+            return RedirectToAction("BlogListByWriter");
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace BusinessLayer.Concrete
             _categoryDal.Delete(t);
         }
 
-        public Category GetById(int id)
+        public Category TGetById(int id)
         {
             return _categoryDal.GetById(id);
         }

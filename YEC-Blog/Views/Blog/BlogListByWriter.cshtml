@@ -3,9 +3,8 @@
     ViewData["Title"] = "BlogListByWriter";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
-
 <h1>Yazarın Blogları</h1>
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
     <tr>
         <th>#</th>
         <th>Blog Başlığı</th>
@@ -34,10 +33,9 @@
                     <span class="badge badge-secondary">Pasif</span>
                 }
             </td>
-            <td><a href="#" class="btn btn-danger">Sil</a></td>
-            <td><a href="#" class="btn btn-warning">Düzenle</a></td>
+            <td><a href="/Blog/DeleteBlog/@item.BlogID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Blog/EditBlog/@item.BlogID" class="btn btn-warning">Düzenle</a></td>
         </tr>
     }
 </table>
 <a href="/Blog/BlogAdd/" class="btn btn-primary">Yeni Blog Oluştur</a>
-
