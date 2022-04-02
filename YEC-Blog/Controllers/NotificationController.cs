@@ -6,12 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace YEC_Blog.ViewComponents.Writer
+namespace YEC_Blog.Controllers
 {
-    public class WriterNotification : ViewComponent
+    public class NotificationController : Controller
     {
         NotificationManager nm = new NotificationManager(new EfNotificationRepository());
-        public IViewComponentResult Invoke()
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult AllNotification()
         {
             var values = nm.GetList();
             return View(values);
