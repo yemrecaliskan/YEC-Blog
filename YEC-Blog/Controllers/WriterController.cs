@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -14,12 +15,17 @@ using YEC_Blog.Models;
 
 namespace YEC_Blog.Controllers
 {
-    [AllowAnonymous]
     public class WriterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
+        [Authorize]
         public IActionResult Index()
         {
+            var userMail = User.Identity.Name;
+            ViewBag.userMail = userMail;
+            Context c = new Context();
+            var writerName = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterName).FirstOrDefault();
+            ViewBag.writerName = writerName;
             return View();
         }
         public IActionResult WriterProfile()
@@ -46,14 +52,12 @@ namespace YEC_Blog.Controllers
             return PartialView();
         }
 
-
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
             var writerValues = wm.TGetById(1);
             return View(writerValues);
         }
-
 
         [HttpPost]
         public IActionResult WriterEditProfile(Writer p)
@@ -80,6 +84,7 @@ namespace YEC_Blog.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult WriterAdd(AddProfileImage p)
         {
