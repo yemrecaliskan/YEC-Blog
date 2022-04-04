@@ -10,7 +10,6 @@ namespace YEC_Blog.Controllers
 {
     public class DashboardController : Controller
     {
-        [AllowAnonymous]
         public IActionResult Index()
         {
             Context c = new Context();

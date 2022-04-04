@@ -18,6 +18,7 @@ namespace YEC_Blog.Controllers
     public class WriterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
+        
         [Authorize]
         public IActionResult Index()
         {
@@ -28,16 +29,13 @@ namespace YEC_Blog.Controllers
             ViewBag.writerName = writerName;
             return View();
         }
+
         public IActionResult WriterProfile()
         {
             return View();
         }
-        public IActionResult WriterMail()
-        {
-            return View();
-        }
 
-        public IActionResult Test()
+        public IActionResult WriterMail()
         {
             return View();
         }
@@ -55,7 +53,10 @@ namespace YEC_Blog.Controllers
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var writerValues = wm.TGetById(1);
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            var writerID = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
+            var writerValues = wm.TGetById(writerID);
             return View(writerValues);
         }
 
