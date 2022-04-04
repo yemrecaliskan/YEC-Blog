@@ -6,16 +6,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace YEC_Blog.ViewComponents.Writer
+namespace YEC_Blog.Controllers
 {
-    public class WriterMessageNotification : ViewComponent
+    public class MessageController : Controller
     {
         Message2Manager mm = new Message2Manager(new EfMessage2Repository());
-        public IViewComponentResult Invoke()
+        public IActionResult Inbox()
         {
             int id = 2;
             var values = mm.GetInboxListByWriter(id);
             return View(values);
+        }
+
+        public IActionResult MessageDetails(int id)
+        {
+            var value = mm.TGetById(id);
+            return View(value);
         }
     }
 }
