@@ -39,7 +39,8 @@ namespace YEC_Blog
             services.AddMvc();
             services.AddAuthentication(
                 CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(x => {
+                .AddCookie(x =>
+                {
                     x.LoginPath = "/Login/Index";
                 });
         }
@@ -58,7 +59,7 @@ namespace YEC_Blog
                 app.UseHsts();
             }
 
-            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404","?code={0}");
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404", "?code={0}");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -74,6 +75,11 @@ namespace YEC_Blog
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                  );
             });
         }
     }
