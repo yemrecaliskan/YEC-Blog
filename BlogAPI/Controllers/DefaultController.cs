@@ -19,6 +19,7 @@ namespace BlogAPI.Controllers
             var values = c.Employees.ToList();
             return Ok(values);
         }
+
         [HttpPost]
         public IActionResult EmployeeAdd(Employee employee)
         {
@@ -27,5 +28,21 @@ namespace BlogAPI.Controllers
             c.SaveChanges();
             return Ok();
         }
+
+        [HttpGet("{id}")]
+        public IActionResult EmployeeGetById(int id)
+        {
+            using var c = new Context();
+            var employee = c.Employees.Find(id);
+            if(employee == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(employee);
+            }
+        }
+
     }
 }
