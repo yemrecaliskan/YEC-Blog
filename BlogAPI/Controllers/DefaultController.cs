@@ -19,5 +19,13 @@ namespace BlogAPI.Controllers
             var values = c.Employees.ToList();
             return Ok(values);
         }
+        [HttpPost]
+        public IActionResult EmployeeAdd(Employee employee)
+        {
+            using var c = new Context();
+            c.Add(employee);
+            c.SaveChanges();
+            return Ok();
+        }
     }
 }
