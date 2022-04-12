@@ -1,0 +1,32 @@
+﻿@using YEC_Blog.Controllers
+@model List<Class1>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="ibox">
+    <div class="ibox-content">
+        <h1>Çalışan Listesi</h1>
+        <table class="table table-bordered">
+            <tr>
+                <th>#</th>
+                <th>Adı Soyadı</th>
+                <th>Sil</th>
+                <th>Düzenle</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Name</td>
+                    <td><a href="#" class="btn btn-outline-danger">Sil</a></td>
+                    <td><a href="#" class="btn btn-outline-success">Düzenle</a></td>
+                </tr>
+            }
+        </table>
+        <a href="/Employee/AddEmployee/" class="btn btn-outline-primary">Yeni Çalışan Ekleme</a>
+
+    </div>
+
+</div>
