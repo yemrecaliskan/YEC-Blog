@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YEC-Blog", "YEC-Blog\YEC-Blog.csproj", "{17DA9A6E-7E8D-4D57-BB08-AF8AD7027179}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YEC-Blog", "YEC-Blog\YEC-Blog.csproj", "{17DA9A6E-7E8D-4D57-BB08-AF8AD7027179}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{48E056E0-0FFF-45FD-8961-4786BD95D239}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{48E056E0-0FFF-45FD-8961-4786BD95D239}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{4B7002F3-1BD4-4CB0-9677-646B983A048A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{4B7002F3-1BD4-4CB0-9677-646B983A048A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{D8D9E4D2-004B-43BD-BEA4-E19E3ED030EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{D8D9E4D2-004B-43BD-BEA4-E19E3ED030EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{B7902604-3FC3-4944-847E-15D09F50826F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{B7902604-3FC3-4944-847E-15D09F50826F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogAPI", "BlogAPI\BlogAPI.csproj", "{038555D6-F137-400E-9B0F-E7428A8C914C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{B7902604-3FC3-4944-847E-15D09F50826F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7902604-3FC3-4944-847E-15D09F50826F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7902604-3FC3-4944-847E-15D09F50826F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{038555D6-F137-400E-9B0F-E7428A8C914C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{038555D6-F137-400E-9B0F-E7428A8C914C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{038555D6-F137-400E-9B0F-E7428A8C914C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{038555D6-F137-400E-9B0F-E7428A8C914C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
