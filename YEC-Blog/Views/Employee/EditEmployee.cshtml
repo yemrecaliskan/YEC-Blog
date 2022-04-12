@@ -1,0 +1,21 @@
+﻿@model YEC_Blog.Controllers.Class1
+@{
+    ViewData["Title"] = "EditEmployee";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="ibox">
+    <div class="ibox-content">
+        <h1>API ile Personel Güncelleme Sayfası</h1>
+        <form method="post">
+            <label>ID</label>
+            @Html.TextBoxFor(x=>x.ID, new { @class = "form-control" , @readonly = "readonly" })
+            <br />
+            <label>Persone</label>
+            @Html.TextBoxFor(x=>x.Name, new { @class = "form-control" })
+            <br />
+            <button class="btn btn-outline-success">Güncelle</button>
+        </form>
+    </div>
+</div>
+
