@@ -44,5 +44,39 @@ namespace BlogAPI.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult EmployeeDeleteById(int id)
+        {
+            using var c = new Context();
+            var employee = c.Employees.Find(id);
+            if(employee == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                c.Remove(employee);
+                c.SaveChanges();
+                return Ok(employee);
+            }
+        }
+        
+        [HttpPut]
+        public IActionResult EmployeeUpdate(Employee employee)
+        {
+            using var c = new Context();
+            var emp = c.Find<Employee>(employee.ID);
+            if(emp == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                emp.Name = employee.Name;
+                c.Update(emp);
+                c.SaveChanges();
+                return Ok();
+            }
+        }
     }
 }
