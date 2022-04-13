@@ -54,7 +54,8 @@ namespace YEC_Blog.Controllers
         public IActionResult WriterEditProfile()
         {
             Context c = new Context();
-            var userMail = User.Identity.Name;
+            var userName = User.Identity.Name;
+            var userMail = c.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
             var writerID = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
             var writerValues = wm.TGetById(writerID);
             return View(writerValues);
