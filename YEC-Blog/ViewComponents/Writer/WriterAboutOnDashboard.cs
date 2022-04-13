@@ -12,10 +12,13 @@ namespace YEC_Blog.ViewComponents.Writer
     public class WriterAboutOnDashboard: ViewComponent
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
+
         Context c = new Context();
         public IViewComponentResult Invoke()
         {
-            var userMail = User.Identity.Name;
+            var userName = User.Identity.Name;
+            ViewBag.userName = userName;
+            var userMail = c.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
             var writerID = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
             var values = wm.GetWriterByID(writerID);
             return View(values);
