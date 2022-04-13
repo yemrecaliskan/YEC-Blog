@@ -28,5 +28,7 @@ namespace YEC_Blog.Models
         [Required(ErrorMessage = "Lütfen kullanıcı adınızı giriniz.")]
         public string UserName { get; set; }
 
+        public bool IsAcceptTheContract { get; set; }
+
     }
 }

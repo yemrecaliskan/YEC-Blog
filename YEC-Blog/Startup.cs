@@ -29,7 +29,10 @@ namespace YEC_Blog
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Context>();
-            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+            services.AddIdentity<AppUser, AppRole>(x=> {
+                x.Password.RequireUppercase = false;
+                x.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<Context>();
             services.AddControllersWithViews();
 
             services.AddSession();

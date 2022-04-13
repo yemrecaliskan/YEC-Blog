@@ -29,7 +29,13 @@ namespace YEC_Blog.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(UserSignUpViewModel p)
         {
-            if(ModelState.IsValid)
+            if (!p.IsAcceptTheContract)
+            {
+                ModelState.AddModelError("IsAcceptTheContract",
+                    "Sayfamıza kayıt olabilmek için gizlilik sözleşmesini kabul etmeniz gerekmektedir.");
+                return View(p);
+            }
+            if (ModelState.IsValid)
             {
                 AppUser user = new AppUser()
                 {
