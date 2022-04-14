@@ -79,6 +79,7 @@ namespace YEC_Blog.Controllers
             values.NameSurname = model.NameSurname;
             values.ImageUrl = model.ImageUrl;
             values.UserName = model.UserName;
+            values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.Password);
             var result = await _userManager.UpdateAsync(values);
             return RedirectToAction("Index", "Dashboard");
 
