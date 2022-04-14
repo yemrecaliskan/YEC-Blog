@@ -5,6 +5,7 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,15 @@ namespace YEC_Blog.Controllers
     public class WriterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
-        
+        UserManager userManager = new UserManager(new EfUserRepository());
+
+        private readonly UserManager<AppUser> _userManager;
+
+        public WriterController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [Authorize]
         public IActionResult Index()
         {
@@ -56,9 +65,9 @@ namespace YEC_Blog.Controllers
             Context c = new Context();
             var userName = User.Identity.Name;
             var userMail = c.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
-            var writerID = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
-            var writerValues = wm.TGetById(writerID);
-            return View(writerValues);
+            var userID = c.Users.Where(x => x.Email == userMail).Select(y=>y.Id).FirstOrDefault();
+            var values = userManager.TGetById(userID);
+            return View(values);
         }
 
         [HttpPost]

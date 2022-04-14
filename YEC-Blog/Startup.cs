@@ -48,7 +48,7 @@ namespace YEC_Blog
                 CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(x =>
                 {
-                    x.LoginPath = "/Login/Index";
+                    x.LoginPath = "/Login/Index/";
                 });
         }
 
