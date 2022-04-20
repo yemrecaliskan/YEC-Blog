@@ -21,6 +21,7 @@ namespace YEC_Blog.Controllers
             _signInManager = signInManager;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -38,11 +39,11 @@ namespace YEC_Blog.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Login");
+                    TempData["ErrorMessage"] = "Kullanıcı adınız veya parolanız hatalı lütfen tekrar deneyiniz.";
+                    return View(p);
                 }
             }
-            return View();
-           
+            return View(p);
         }
 
         public async Task<IActionResult> LogOut()

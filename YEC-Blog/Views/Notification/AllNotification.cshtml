@@ -5,19 +5,25 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<h1>Bildirimler</h1>
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Bildirim</th>
-        <th>Tarih</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.NotificationID</td>
-            <td>@item.NotificationDetails</td>
-            <td>@item.NotificationDate.ToShortDateString()</td>
-        </tr>
-    }
-</table>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1>Bildirimler</h1>
+            <table class="table table-hover">
+                <tr>
+                    <th>#</th>
+                    <th>Bildirim</th>
+                    <th>Tarih</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.NotificationID</td>
+                        <td>@item.NotificationDetails</td>
+                        <td>@item.NotificationDate.ToShortDateString()</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

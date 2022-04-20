@@ -33,13 +33,16 @@ namespace YEC_Blog
                 x.Password.RequireUppercase = false;
                 x.Password.RequireNonAlphanumeric = false;
             }).AddEntityFrameworkStores<Context>();
+
             services.AddControllersWithViews();
 
             services.AddSession();
 
             services.AddMvc(config =>
             {
-                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                var policy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
@@ -48,8 +51,18 @@ namespace YEC_Blog
                 CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(x =>
                 {
-                    x.LoginPath = "/Login/Index/";
+                    x.LoginPath = "/Login/Index";
                 });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                //Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(100);
+
+                options.LoginPath = "/Login/Index";
+                options.SlidingExpiration = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

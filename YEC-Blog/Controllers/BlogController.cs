@@ -37,8 +37,11 @@ namespace YEC_Blog.Controllers
 
         public IActionResult BlogListByWriter()
         {
-            var userMail = User.Identity.Name;
+            var userName = User.Identity.Name;
+            
+            var userMail = c.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
             var writerID = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
+            ViewBag.writerID = writerID;
             var values = bm.GetListWithCategoryByWriterBM(writerID);
             return View(values);
         }
@@ -58,7 +61,8 @@ namespace YEC_Blog.Controllers
         [HttpPost]
         public IActionResult BlogAdd(Blog p)
         {
-            var userMail = User.Identity.Name;
+            var userName = User.Identity.Name;
+            var userMail = c.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
             var writerID = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
             BlogValidator bv = new BlogValidator();
             ValidationResult results = bv.Validate(p);
@@ -104,7 +108,8 @@ namespace YEC_Blog.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog p)
         {
-            var userMail = User.Identity.Name;
+            var userName = User.Identity.Name;
+            var userMail = c.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
             var writerID = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
             p.WriterID = writerID;
             p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
