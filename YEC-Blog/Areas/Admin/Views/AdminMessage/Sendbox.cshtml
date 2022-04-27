@@ -2,7 +2,7 @@
 @model List<Message2>
 
 @{
-    ViewData["Title"] = "Inbox";
+    ViewData["Title"] = "Sendbox";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
@@ -21,7 +21,7 @@
                     </div>
                 </form>
                 <h2>
-                    Gelen Kutusu (0)
+                    Giden Kutusu (0)
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
                     <div class="btn-group float-right">
@@ -45,7 +45,7 @@
                                 <td class="check-mail">
                                     <input type="checkbox" class="i-checks">
                                 </td>
-                                <td class="mail-ontact">@item.SenderUser.WriterName</td>
+                                <td class="mail-ontact">@item.ReceiverUser.WriterName</td>
                                 <td class="mail-subject">@item.Subject</td>
                                 <td class="text-right mail-date">@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
                             </tr>
