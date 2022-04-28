@@ -6,15 +6,8 @@
                     <img alt="image" class="rounded-circle" src="~/admin/img/profile_small.jpg" />
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="block m-t-xs font-bold">Yunus Emre Çalışkan</span>
-                        <span class="text-muted text-xs block">Bilgisayar ve Eğitim Teknolojileri Öğretmeni<b class="caret"></b></span>
+                        <span class="text-muted text-xs block">Bilgisayar ve Eğitim Teknolojileri Öğretmeni</span>
                     </a>
-                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                        <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
-                        <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="login.html">Logout</a></li>
-                    </ul>
                 </div>
                 <div class="logo-element">
                     YECLog
@@ -27,15 +20,12 @@
                 <a href="/Admin/Chart/Index/"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Grafikler</span></a>
             </li>
             <li>
-                <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mesajlar </span></a>
+                <a href=""><i class="fa fa-envelope"></i> <span class="nav-label">Mesajlar </span></a>
                 <ul class="nav nav-second-level collapse">
                     <li><a href="/Admin/AdminMessage/Inbox">Gelen Kutusu</a></li>
                     <li><a href="/Admin/AdminMessage/Sendbox">Giden Kutusu</a></li>
                     <li><a href="/Admin/AdminMessage/ComposeMessage">Yeni Mesaj Oluştur</a></li>
                 </ul>
-            </li>
-            <li>
-                <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrikler</span>  </a>
             </li>
             <li>
                 <a href="/Admin/Category/"><i class="fa fa-list-ol"></i> <span class="nav-label">Kategoriler</span>  </a>
@@ -49,21 +39,13 @@
             <li>
                 <a href="/Admin/Writer/Index/"><i class="fa fa-group"></i> <span class="nav-label">Yazarlar</span>  </a>
             </li>
-            <li>
-                <a href="metrics.html"><i class="fa fa-cog"></i> <span class="nav-label">Ayarlar</span>  </a>
-            </li>
-            <li>
-                <a href="/Admin/AdminRole/"><i class="fa fa-percent"></i> <span class="nav-label">Roller</span>  </a>
-            </li>
-            <li>
-                <a href="metrics.html"><i class="fa fa-bell"></i> <span class="nav-label">Bildirimler</span>  </a>
-            </li>
-            <li>
-                <a href="metrics.html"><i class="fa fa-phone"></i> <span class="nav-label">İletişim</span>  </a>
-            </li>
-            <li>
-                <a href="metrics.html"><i class="fa fa-book"></i> <span class="nav-label">Hakkımızda</span>  </a>
-            </li>
+            @if (User.IsInRole(role: "Admin"))
+            {
+                <li>
+                    <a href="/Admin/AdminRole/"><i class="fa fa-percent"></i> <span class="nav-label">Roller</span>  </a>
+                </li>
+            }
+
             <li>
                 <a href="/Admin/Blog/ExportExcelBlogList"><i class="fa fa-bar-chart"></i> <span class="nav-label">Excel Rapor</span></a>
             </li>
