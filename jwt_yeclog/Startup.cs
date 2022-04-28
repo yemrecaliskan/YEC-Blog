@@ -42,7 +42,7 @@ namespace jwt_yeclog
                 {
                     ValidIssuer = "http://localhost",
                     ValidAudience = "http://localhost",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("yeclog")),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("yeclogblogprojesijwt")),
                     ValidateIssuerSigningKey = true,
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero
@@ -61,7 +61,7 @@ namespace jwt_yeclog
             }
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
