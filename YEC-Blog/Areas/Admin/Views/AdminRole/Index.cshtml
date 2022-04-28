@@ -29,13 +29,14 @@
                                 <tr>
                                     <th>@item.Id</th>
                                     <td>@item.Name</td>
-                                    <td><a href="#" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="#" class="btn btn-warning">Düzenle</a></td>
+                                    <td><a href="/Admin/AdminRole/DeleteRole/@item.Id" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/AdminRole/UpdateRole/@item.Id" class="btn btn-warning">Düzenle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
                     <a href="/Admin/AdminRole/AddRole" class="btn btn-primary">Yeni Rol Ekle</a>
+                    <a href="/Admin/AdminRole/UserRoleList" class="btn btn-info">Kullanıcı Rol Listesi</a>
                 </div>
             </div>
         </div>
